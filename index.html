@@ -6,6 +6,39 @@
     <title>Will You Be My Valentine?</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lustria&display=swap">
     <link rel="stylesheet" href="style.css"> <!-- Link to external stylesheet -->
+
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        // Initialize EmailJS with your User ID
+        (function(){
+            emailjs.init("Hm657TNYKxfZF2duY"); // Your EmailJS public key
+        })();
+
+        function sendEmail() {
+            // Send the email using EmailJS
+            emailjs.send("service_8p48ts6", "template_ii9jbcl", {
+                message: "The user clicked YES to the Valentine's question!",
+                to_email: "makavelixexar00@gmail.com" // Your email address
+            }).then(
+                function(response) {
+                    alert("Email sent successfully!");
+                }, 
+                function(error) {
+                    alert("Failed to send email.");
+                }
+            );
+        }
+
+        // Handle the button click
+        function selectOption(option) {
+            if (option === 'yes') {
+                sendEmail(); // Call sendEmail when 'Yes' is clicked
+            }
+            // You can handle the 'No' button logic here if needed
+        }
+    </script>
 </head>
 <body>
     <div id="container">
